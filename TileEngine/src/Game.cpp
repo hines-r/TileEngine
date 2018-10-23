@@ -50,6 +50,12 @@ void Game::HandleEvents()
 		case SDL_QUIT:
 			isRunning = false;
 			break;
+		case SDL_KEYDOWN:
+			if (event.key.keysym.sym == SDLK_SPACE)
+			{
+				map->GenerateMap();
+			}
+			break;
 	}
 }
 

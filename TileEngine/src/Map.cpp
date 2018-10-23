@@ -12,6 +12,24 @@ Map::Map()
 	wall = TextureManager::LoadTexture("res/wall.png");
 	floor = TextureManager::LoadTexture("res/floor.png");
 
+	src.x = src.y = 0;
+	src.w = dest.w = tileSize;
+	src.h = dest.h = tileSize;
+
+	dest.x = dest.y = 0;
+
+	GenerateMap();
+}
+
+Map::~Map()
+{
+
+}
+
+void Map::GenerateMap()
+{
+	std::cout << "Generating new map..." << std::endl;
+
 	RandomlyFillMap();
 
 	for (int i = 0; i < smoothingInterations; i++)
@@ -20,24 +38,13 @@ Map::Map()
 	}
 
 	PrintMap();
-
-	src.x = src.y = 0;
-	src.w = dest.w = tileSize;
-	src.h = dest.h = tileSize;
-
-	dest.x = dest.y = 0;
-}
-
-Map::~Map()
-{
-
 }
 
 void Map::RandomlyFillMap()
 {
 	std::random_device rd; // Gets random number from a device
 	std::mt19937 eng(rd()); // Seed
-	std::uniform_int_distribution<> distr(0, 100); // range from 0 to 100%
+	std::uniform_int_distribution<> distr(0, 100); // Range from 0 to 100%
 
 	for (int row = 0; row < width; row++)
 	{

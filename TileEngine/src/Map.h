@@ -8,6 +8,7 @@ public:
 	Map();
 	~Map();
 
+	void GenerateMap();
 	void DrawMap();
 
 private:
